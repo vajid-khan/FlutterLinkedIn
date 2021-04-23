@@ -1,6 +1,7 @@
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 import 'package:linked_in/models/Post.dart';
+import 'package:linked_in/models/User.dart';
 
 class ApiClient {
   Future<List<Post>> getPost() async {
@@ -10,7 +11,7 @@ class ApiClient {
     if (response.statusCode == 200) {
       var content = convert.jsonDecode(response.body)['data'] as List;
       return content.map((e) {
-        Owner owner = new Owner(
+        User owner = new User(
             e['owner']['id'],
             e['owner']['email'],
             e['owner']['title'],

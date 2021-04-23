@@ -6,6 +6,38 @@ class PostCard extends StatelessWidget {
   final Post post;
   PostCard(this.post);
 
+  void _settingModalBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return Container(
+              child: Wrap(
+                children: <Widget>[
+                   ListTile(
+                      leading:  Icon(Icons.save),
+                      title:  Text('Save'),
+                      onTap: () => {}),
+                  ListTile(
+                    leading:  Icon(Icons.share),
+                    title:  Text('Share'),
+                    onTap: () => {},
+                  ),
+				  ListTile(
+                    leading:  Icon(Icons.remove_red_eye_outlined),
+                    title:  Text('Who else can this post?'),
+                    onTap: () => {},
+                  ),
+				  ListTile(
+                    leading:  Icon(Icons.flag),
+                    title:  Text('Report'),
+                    onTap: () => {},
+                  ),
+                ],
+              ),
+              );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,14 +55,22 @@ class PostCard extends StatelessWidget {
                       children: [
                         CircleAvatar(
                             foregroundImage: NetworkImage(post.owner.picture),
-                            backgroundColor: Colors.amber,
+                            backgroundColor: Colors.grey[350],
                             minRadius: 30),
                         Container(
-                          child: Text(
-                            "${post.owner.firstName} ${post.owner.lastName}",
-                            overflow: TextOverflow.fade,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
+                          child: Column(
+                            children: [
+                              Text(
+                                "${post.owner.firstName} ${post.owner.lastName}",
+                                overflow: TextOverflow.fade,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              Text(
+                                "${post.publishDate}",
+                              ),
+                            ],
+                            crossAxisAlignment: CrossAxisAlignment.start,
                           ),
                           margin: EdgeInsets.only(left: 10),
                         ),
@@ -40,7 +80,9 @@ class PostCard extends StatelessWidget {
                   AppButton(
                     label: "",
                     icon: Icons.open_in_browser,
-                    onPress: () {},
+                    onPress: () {
+                      _settingModalBottomSheet(context);
+                    },
                     size: 30,
                   ),
                 ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linked_in/api/Api.dart';
 import 'package:linked_in/models/Post.dart';
-import 'package:linked_in/screens/postCard.dart';
+import 'package:linked_in/screens/home/postCard.dart';
 
 class Home extends StatefulWidget {
   @override
