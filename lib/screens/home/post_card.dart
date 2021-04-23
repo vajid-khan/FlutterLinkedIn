@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linked_in/models/Post.dart';
 import 'package:linked_in/widgets/appButtons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostCard extends StatelessWidget {
   final Post post;
@@ -11,30 +12,30 @@ class PostCard extends StatelessWidget {
         context: context,
         builder: (BuildContext bc) {
           return Container(
-              child: Wrap(
-                children: <Widget>[
-                   ListTile(
-                      leading:  Icon(Icons.save),
-                      title:  Text('Save'),
-                      onTap: () => {}),
-                  ListTile(
-                    leading:  Icon(Icons.share),
-                    title:  Text('Share'),
-                    onTap: () => {},
-                  ),
-				  ListTile(
-                    leading:  Icon(Icons.remove_red_eye_outlined),
-                    title:  Text('Who else can this post?'),
-                    onTap: () => {},
-                  ),
-				  ListTile(
-                    leading:  Icon(Icons.flag),
-                    title:  Text('Report'),
-                    onTap: () => {},
-                  ),
-                ],
-              ),
-              );
+            child: Wrap(
+              children: <Widget>[
+                ListTile(
+                    leading: Icon(Icons.save),
+                    title: Text('Save'),
+                    onTap: () => {}),
+                ListTile(
+                  leading: Icon(Icons.share),
+                  title: Text('Share'),
+                  onTap: () => {},
+                ),
+                ListTile(
+                  leading: Icon(Icons.remove_red_eye_outlined),
+                  title: Text('Who else can this post?'),
+                  onTap: () => {},
+                ),
+                ListTile(
+                  leading: Icon(Icons.flag),
+                  title: Text('Report'),
+                  onTap: () => {},
+                ),
+              ],
+            ),
+          );
         });
   }
 
@@ -77,14 +78,13 @@ class PostCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  AppButton(
-                    label: "",
-                    icon: Icons.open_in_browser,
-                    onPress: () {
-                      _settingModalBottomSheet(context);
-                    },
-                    size: 30,
-                  ),
+                     AppButton(
+                      label: "",
+                      icon: FontAwesomeIcons.chevronDown,
+                      onPress: () {
+                        _settingModalBottomSheet(context);
+                      },
+                    ),
                 ],
               ),
             ),
@@ -111,6 +111,45 @@ class PostCard extends StatelessWidget {
               ),
               decoration: BoxDecoration(color: Colors.grey[350]),
             ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 5,horizontal: 5),
+              child: Row(
+				//   crossAxisAlignment: CrossAxisAlignment.stretch,
+				  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                        Container(
+							child: FaIcon(
+								FontAwesomeIcons.thumbsUp,
+                          size: 15,
+                          color: Colors.blue,
+                        ),
+						margin: EdgeInsets.symmetric(horizontal: 5),
+						),
+						Container(
+							child: FaIcon(
+								FontAwesomeIcons.heart,
+                          size: 15,
+                          color: Colors.red,
+                        ),
+						margin: EdgeInsets.symmetric(horizontal: 5),
+						),
+						Container(
+							child: FaIcon(
+								FontAwesomeIcons.share,
+                          size: 15,
+                          color: Colors.blue,
+                        ),
+						margin: EdgeInsets.symmetric(horizontal: 5),
+						),
+						Text('147', style: TextStyle(fontSize: 10),)
+                    ],
+                  ),
+				  Text('4 comments')
+                ],
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -120,12 +159,12 @@ class PostCard extends StatelessWidget {
                 Flexible(
                     child: AppButton(
                         label: "Comment",
-                        icon: Icons.add_comment,
+                        icon: FontAwesomeIcons.comments,
                         onPress: () {})),
                 Flexible(
                     child: AppButton(
                         label: "Share",
-                        icon: Icons.share_outlined,
+                        icon: FontAwesomeIcons.share,
                         onPress: () {})),
                 Flexible(
                     child: AppButton(

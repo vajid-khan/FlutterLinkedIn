@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:linked_in/screens/home.dart';
+import 'package:linked_in/screens/home/home.dart';
+import 'package:linked_in/screens/networks/network.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  @override
   @override
   _MyApp createState() => _MyApp();
 }
@@ -16,7 +16,7 @@ class _MyApp extends State<MyApp> {
 
   var _pages = [
     Home(),
-    Text('Screen 2'),
+    Network(),
     Text('Screen 3'),
     Text('Screen 4'),
     Text('Screen 5'),
@@ -44,10 +44,11 @@ class _MyApp extends State<MyApp> {
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
+		  currentIndex: currentIndex,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black.withOpacity(.60),
-          selectedFontSize: 14,
-          unselectedFontSize: 12,
+          selectedFontSize: 12,
+          unselectedFontSize: 10,
           onTap: changeTab,
           items: [
             BottomNavigationBarItem(
