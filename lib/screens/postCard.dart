@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linked_in/models/Post.dart';
+import 'package:linked_in/widgets/appButtons.dart';
 
 class PostCard extends StatelessWidget {
   final Post post;
@@ -36,7 +37,7 @@ class PostCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  IconButton(
+                  AppButton(
                     label: "",
                     icon: Icons.open_in_browser,
                     onPress: () {},
@@ -72,50 +73,22 @@ class PostCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Flexible(
-                    child: IconButton(
+                    child: AppButton(
                         label: "Like", icon: Icons.thumb_up, onPress: () {})),
                 Flexible(
-                    child: IconButton(
+                    child: AppButton(
                         label: "Comment",
                         icon: Icons.add_comment,
                         onPress: () {})),
                 Flexible(
-                    child: IconButton(
+                    child: AppButton(
                         label: "Share",
                         icon: Icons.share_outlined,
                         onPress: () {})),
                 Flexible(
-                    child: IconButton(
+                    child: AppButton(
                         label: "Send", icon: Icons.send, onPress: () {})),
               ],
-            )
-          ],
-        ));
-  }
-}
-
-class IconButton extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final Function onPress;
-  final double size;
-
-  IconButton({this.label, this.icon, this.onPress, this.size = 20});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: onPress,
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              color: Colors.grey,
-              size: size,
-            ),
-            Text(
-              label,
-              style: TextStyle(color: Colors.black),
             )
           ],
         ));
